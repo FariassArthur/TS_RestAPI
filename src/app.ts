@@ -18,6 +18,11 @@ import router from "./router";
 //Logger
 import Logger from "../config/logger";
 
+//Middlewares
+import morganMiddleware from "./middleware/morganMiddleware.";
+
+app.use(morganMiddleware);
+
 app.use("/api", router);
 
 //app port
@@ -25,5 +30,5 @@ const port = config.get<number>("port"); //método get pega os dados
 
 app.listen(port, async () => {
   await db();
-  Logger.info(`Aplicação está funcionando na porta: ${port}`)
+  Logger.info(`Aplicação está funcionando na porta: ${port}`);
 });
